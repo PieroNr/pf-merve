@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scantech — LinkedIn | Merve Borza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --text:#f4f2f5; --text-dim:rgba(244,242,245,0.62); --text-faint:rgba(244,242,245,0.38);
+    --violet:#7f5af0; --violet-soft:#a695f2; --hairline:rgba(255,255,255,0.1);
+    --font-display:'Bodoni Moda', serif; --font-body:'Jost', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:var(--font-body); min-height:100vh; -webkit-font-smoothing:antialiased;}
+
+  .back-link{
+    position:fixed; top:24px; left:24px; z-index:10;
+    display:flex; align-items:center; gap:8px;
+    color:var(--text-dim); font-size:13px; letter-spacing:1px; text-decoration:none;
+  }
+  .back-link:hover{color:var(--text);}
+
+  .stage{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:10vh 20px 6vh;
+  }
+  .eyebrow{color:var(--violet-soft); font-size:11px; letter-spacing:3px; margin-bottom:8px;}
+  .stage h1{font-family:var(--font-display); font-weight:400; font-size:26px; margin-bottom:6vh;}
+
+  /* --- Browser window frame --- */
+  .browser{
+    width:min(760px, 90vw);
+    background:#111;
+    border-radius:10px;
+    box-shadow:0 0 0 1px rgba(127,90,240,0.25), 0 30px 60px rgba(0,0,0,0.6);
+    overflow:hidden;
+  }
+  .browser-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 16px;
+    background:#181818;
+    border-bottom:0.5px solid var(--hairline);
+  }
+  .browser-bar .dot{width:9px; height:9px; border-radius:50%;}
+  .browser-bar .dot:nth-child(1){background:#ff5f57;}
+  .browser-bar .dot:nth-child(2){background:#febc2e;}
+  .browser-bar .dot:nth-child(3){background:#28c840;}
+  .browser-url{
+    margin-left:16px; flex:1; background:#0e0e0e; border-radius:5px; padding:5px 12px;
+    font-size:11px; color:var(--text-faint);
+  }
+
+  .linkedin-post{
+    padding:22px 26px;
+  }
+  .post-header{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
+  .post-avatar{width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#7f5af0,#3d2f8f);}
+  .post-meta strong{font-size:14px; display:block;}
+  .post-meta span{font-size:12px; color:var(--text-faint);}
+
+  .video-track-wrap{position:relative; overflow:hidden; border-radius:8px;}
+  .video-track{
+    display:flex;
+    transition:transform .45s cubic-bezier(.65,0,.35,1);
+  }
+  .video-slide{
+    min-width:100%;
+    aspect-ratio:16/9;
+    background:linear-gradient(160deg, #141014, #1c1620 60%, #0a0a0a);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .play-btn{
+    width:60px; height:60px; border-radius:50%; border:1.5px solid var(--violet);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .play-btn svg{width:18px; height:18px; fill:var(--violet-soft); margin-left:2px;}
+  .slide-caption{
+    position:absolute; bottom:14px; left:16px; font-size:11px; letter-spacing:1px; color:var(--text-faint);
+  }
+
+  .nav-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.5); border:0.5px solid rgba(127,90,240,0.4);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:4; transition:background .2s;
+  }
+  .nav-arrow:hover{background:rgba(127,90,240,0.25);}
+  .nav-arrow svg{width:16px; height:16px; stroke:#fff; fill:none; stroke-width:2;}
+  .nav-arrow.prev{left:14px;}
+  .nav-arrow.next{right:14px;}
+
+  .dots{display:flex; justify-content:center; gap:8px; margin-top:16px;}
+  .dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.25); transition:background .2s;}
+  .dots span.active{background:var(--violet-soft);}
+
+  .post-text{margin-top:16px; font-size:13px; color:var(--text-dim); line-height:1.6;}
+  .post-actions{display:flex; gap:24px; margin-top:14px; padding-top:14px; border-top:0.5px solid var(--hairline); font-size:12px; color:var(--text-faint);}
+
+  .stage-note{
+    margin-top:5vh; color:var(--text-faint); font-size:11px; letter-spacing:0.5px; text-align:center; max-width:400px;
+  }
+</style>
+</head>
+<body>
+
+  <a href="/" class="back-link">← Retour aux projets</a>
+
+  <div class="stage">
+    <p class="eyebrow">SCANTECH — LINKEDIN</p>
+    <h1>Vidéos institutionnelles</h1>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="browser-url">linkedin.com/company/scantech/posts</span>
+      </div>
+
+      <div class="linkedin-post">
+        <div class="post-header">
+          <div class="post-avatar"></div>
+          <div class="post-meta">
+            <strong>Scantech</strong>
+            <span>1 240 abonnés</span>
+          </div>
+        </div>
+
+        <div class="video-track-wrap">
+          <div class="nav-arrow prev" id="prev-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div class="nav-arrow next" id="next-btn">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+
+          <div class="video-track" id="video-track">
+            <div class="video-slide">
+              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="slide-caption">World Metrology Day — teaser</span>
+            </div>
+            <div class="video-slide">
+              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="slide-caption">Présentation scanner — assemblage</span>
+            </div>
+            <div class="video-slide">
+              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="slide-caption">Portrait équipe — coulisses</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" id="dots">
+          <span class="active"></span><span></span><span></span>
+        </div>
+
+        <p class="post-text">Retour sur trois vidéos réalisées pour Scantech — de l'écriture du script au montage final, pensées pour renforcer la présence LinkedIn de l'entreprise.</p>
+        <div class="post-actions">
+          <span>👍 J'aime</span><span>💬 Commenter</span><span>↗ Partager</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="stage-note">Remplace chaque diapositive par ton lecteur vidéo réel (embed YouTube/LinkedIn). Les flèches et points naviguent entre les vidéos du projet.</p>
+  </div>
+
+  <script>
+    var track = document.getElementById('video-track');
+    var slides = track.children;
+    var dots = document.querySelectorAll('#dots span');
+    var index = 0;
+
+    function update(){
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function(d, i){ d.classList.toggle('active', i === index); });
+    }
+
+    document.getElementById('next-btn').addEventListener('click', function(){
+      index = (index + 1) % slides.length;
+      update();
+    });
+    document.getElementById('prev-btn').addEventListener('click', function(){
+      index = (index - 1 + slides.length) % slides.length;
+      update();
+    });
+    dots.forEach(function(d, i){
+      d.addEventListener('click', function(){ index = i; update(); });
+    });
+  </script>
+
+</body>
+</html>

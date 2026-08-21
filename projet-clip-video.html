@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clips vidéo | Merve Borza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --text:#f4f2f5; --text-dim:rgba(244,242,245,0.62); --text-faint:rgba(244,242,245,0.38);
+    --violet:#7f5af0; --violet-soft:#a695f2; --hairline:rgba(255,255,255,0.1);
+    --font-display:'Bodoni Moda', serif; --font-body:'Jost', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:var(--font-body); min-height:100vh; -webkit-font-smoothing:antialiased;}
+
+  .back-link{
+    position:fixed; top:24px; left:24px; z-index:10;
+    display:flex; align-items:center; gap:8px;
+    color:var(--text-dim); font-size:13px; letter-spacing:1px; text-decoration:none;
+  }
+  .back-link:hover{color:var(--text);}
+
+  .stage{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:12vh 20px 8vh;
+  }
+  .eyebrow{color:var(--violet-soft); font-size:11px; letter-spacing:3px; margin-bottom:8px;}
+  .stage h1{font-family:var(--font-display); font-weight:400; font-size:26px; margin-bottom:8vh;}
+
+  .stack{
+    position:relative;
+    width:340px; height:340px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card{
+    position:absolute;
+    width:200px; height:270px;
+    border-radius:10px;
+    background:linear-gradient(160deg, #1c1620, #100c14);
+    border:0.5px solid rgba(127,90,240,0.25);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    cursor:pointer;
+    transition:transform .4s cubic-bezier(.65,0,.35,1), opacity .4s, filter .4s;
+    display:flex; align-items:flex-end; justify-content:center; padding-bottom:20px;
+  }
+  .card .card-label{
+    color:rgba(255,255,255,0.8); font-size:12px; letter-spacing:1px; text-align:center;
+  }
+  .card.left{ transform:translateX(-90px) rotate(-8deg) scale(0.88); opacity:0.55; filter:blur(0.5px); z-index:1;}
+  .card.right{ transform:translateX(90px) rotate(8deg) scale(0.88); opacity:0.55; filter:blur(0.5px); z-index:1;}
+  .card.active{ transform:translateX(0) rotate(0) scale(1); opacity:1; filter:none; z-index:2; border-color:var(--violet);}
+
+  .player-bar{
+    margin-top:6vh;
+    width:340px;
+    display:flex; align-items:center; gap:16px;
+    background:var(--bg); border:0.5px solid var(--hairline); border-radius:40px;
+    padding:10px 20px;
+  }
+  .player-bar button{
+    background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .player-bar svg{width:18px; height:18px; stroke:var(--text); fill:none; stroke-width:1.8;}
+  .player-bar .play svg{fill:var(--violet-soft); stroke:none;}
+  .track-info{flex:1; text-align:center;}
+  .track-info strong{display:block; font-size:12px;}
+  .track-info span{font-size:10px; color:var(--text-faint); letter-spacing:0.5px;}
+
+  .stage-note{
+    margin-top:5vh; color:var(--text-faint); font-size:11px; letter-spacing:0.5px; text-align:center; max-width:360px;
+  }
+</style>
+</head>
+<body>
+
+  <a href="/" class="back-link">← Retour aux projets</a>
+
+  <div class="stage">
+    <p class="eyebrow">CLIPS VIDÉO</p>
+    <h1>Deux titres, deux réalisations</h1>
+
+    <div class="stack" id="stack">
+      <div class="card left" data-index="0">
+        <span class="card-label">Titre 1</span>
+      </div>
+      <div class="card active" data-index="1">
+        <span class="card-label">Titre en cours</span>
+      </div>
+      <div class="card right" data-index="2">
+        <span class="card-label">Titre 2</span>
+      </div>
+    </div>
+
+    <div class="player-bar">
+      <button id="prev"><svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
+      <button class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      <div class="track-info">
+        <strong id="track-title">Titre en cours</strong>
+        <span>MERVE BORZA — RÉALISATION</span>
+      </div>
+      <button id="next"><svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
+    </div>
+
+    <p class="stage-note">Remplace chaque carte par la vraie pochette du clip. Clique sur une carte latérale (ou les flèches) pour la faire passer au centre et lancer la lecture.</p>
+  </div>
+
+  <script>
+    var titles = ['Titre 1', 'Titre en cours', 'Titre 2'];
+    var current = 1;
+    var cards = document.querySelectorAll('.card');
+    var trackTitle = document.getElementById('track-title');
+
+    function render(){
+      cards.forEach(function(card, i){
+        card.classList.remove('left','right','active');
+        if(i === current){ card.classList.add('active'); }
+        else if((i === current - 1) || (current === 0 && i === cards.length - 1)){ card.classList.add('left'); }
+        else { card.classList.add('right'); }
+      });
+      trackTitle.textContent = titles[current] || 'Clip';
+    }
+
+    document.getElementById('next').addEventListener('click', function(){
+      current = (current + 1) % cards.length;
+      render();
+    });
+    document.getElementById('prev').addEventListener('click', function(){
+      current = (current - 1 + cards.length) % cards.length;
+      render();
+    });
+    cards.forEach(function(card, i){
+      card.addEventListener('click', function(){ current = i; render(); });
+    });
+  </script>
+
+</body>
+</html>
