@@ -73,6 +73,21 @@
   }
   .final-cta a.cta-pill:hover{border-color:var(--violet); background:rgba(127,90,240,0.1); transform:translateY(-2px);}
 
+  /* --- Fil de progression + apparition du texte au défilement --- */
+  .story{position:relative;}
+  .story-thread{
+    position:absolute; top:0; bottom:0; left:2.5vw; width:2px;
+    background:var(--hairline); z-index:1;
+  }
+  .story-thread-fill{
+    position:absolute; top:0; left:0; width:100%; height:0%;
+    background:linear-gradient(180deg, var(--violet), var(--violet-soft));
+  }
+  @media (max-width:900px){ .story-thread{display:none;} }
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
   .footer{border-top:0.5px solid var(--hairline); padding:6vh 6vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
   .footer-label{font-size:11px; letter-spacing:2px; color:var(--text-faint);}
   .footer-links{display:flex; gap:20px;}

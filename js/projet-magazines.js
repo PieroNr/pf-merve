@@ -159,16 +159,33 @@
       shelf.classList.remove('hidden');
     });
 
+    // Animation de feuilletage : la page pivote (comme si on la tournait),
+    // le contenu est remplacé au milieu du mouvement, puis la nouvelle page se dépose.
+    function flipToView(newIndex){
+      pageFrame.style.transition = 'transform .18s ease-in, opacity .18s ease-in';
+      pageFrame.style.transform = 'rotateY(-85deg)';
+      pageFrame.style.opacity = '0.15';
+      setTimeout(function(){
+        viewIndex = newIndex;
+        renderPage();
+        pageFrame.style.transition = 'none';
+        pageFrame.style.transform = 'rotateY(85deg)';
+        pageFrame.style.opacity = '0.15';
+        pageFrame.offsetHeight; // force reflow avant de relancer la transition
+        pageFrame.style.transition = 'transform .18s ease-out, opacity .18s ease-out';
+        pageFrame.style.transform = 'rotateY(0deg)';
+        pageFrame.style.opacity = '1';
+      }, 180);
+    }
+
     document.getElementById('mag-next').addEventListener('click', function(){
       var mag = magazines[currentMag];
       if(!mag) return;
-      viewIndex = (viewIndex + 1) % mag.views.length;
-      renderPage();
+      flipToView((viewIndex + 1) % mag.views.length);
     });
     document.getElementById('mag-prev').addEventListener('click', function(){
       var mag = magazines[currentMag];
       if(!mag) return;
-      viewIndex = (viewIndex - 1 + mag.views.length) % mag.views.length;
-      renderPage();
+      flipToView((viewIndex - 1 + mag.views.length) % mag.views.length);
     });
   

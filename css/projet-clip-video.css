@@ -30,13 +30,22 @@
     width:200px; height:270px;
     border-radius:10px;
     background:linear-gradient(160deg, #1c1620, #100c14);
+    background-size:cover;
+    background-position:center;
     border:0.5px solid rgba(127,90,240,0.25);
     box-shadow:0 20px 50px rgba(0,0,0,0.5);
     cursor:pointer;
     transition:transform .4s cubic-bezier(.65,0,.35,1), opacity .4s, filter .4s;
     display:flex; align-items:flex-end; justify-content:center; padding-bottom:20px;
+    overflow:hidden;
+  }
+  .card.has-thumb::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.8) 100%);
   }
   .card .card-label{
+    position:relative; z-index:1;
     color:rgba(255,255,255,0.8); font-size:12px; letter-spacing:1px; text-align:center;
   }
   .card.left{ transform:translateX(-90px) rotate(-8deg) scale(0.88); opacity:0.55; filter:blur(0.5px); z-index:1;}

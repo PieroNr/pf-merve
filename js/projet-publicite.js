@@ -1,6 +1,12 @@
     var viewer = document.getElementById('tv-viewer');
     var frame = document.getElementById('tv-viewer-frame');
     document.querySelectorAll('.tv-unit').forEach(function(tv){
+      var videoId = tv.dataset.video;
+      if(videoId){
+        var screen = tv.querySelector('.tv-screen');
+        screen.style.backgroundImage = 'url(https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg)';
+        screen.classList.add('has-thumb');
+      }
       tv.addEventListener('click', function(){
         var videoId = tv.dataset.video;
         if(tv.dataset.empty){

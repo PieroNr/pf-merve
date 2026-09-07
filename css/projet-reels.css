@@ -57,6 +57,7 @@
   .reel-gradient{
     position:absolute; inset:0;
     background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%);
+    pointer-events:none;
   }
 
   .reel-side-icons{

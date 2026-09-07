@@ -6,6 +6,15 @@
     var viewer = document.getElementById('video-viewer');
     var viewerFrame = document.getElementById('video-viewer-frame');
 
+    // Miniature YouTube en fond de carte tant que la vidéo n'est pas lancée.
+    cards.forEach(function(card){
+      var videoId = card.dataset.video;
+      if(videoId){
+        card.style.backgroundImage = 'url(https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg)';
+        card.classList.add('has-thumb');
+      }
+    });
+
     function render(){
       cards.forEach(function(card, i){
         card.classList.remove('left','right','active');

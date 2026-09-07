@@ -211,9 +211,16 @@
     cursor:pointer;
   }
   .folder:hover .folder-box{
-    transform:scale(1.14) rotate(-4deg);
     border-color:var(--violet);
-    background:rgba(127,90,240,0.1);
+    background-color:rgba(127,90,240,0.1);
+    animation:folderVibrate .28s linear 5;
+  }
+  @keyframes folderVibrate{
+    0%, 100%{transform:scale(1.14) rotate(-4deg) translate(0, 0);}
+    20%{transform:scale(1.14) rotate(-4deg) translate(-2px, 1px);}
+    40%{transform:scale(1.14) rotate(-4deg) translate(2px, -1px);}
+    60%{transform:scale(1.14) rotate(-4deg) translate(-1px, 2px);}
+    80%{transform:scale(1.14) rotate(-4deg) translate(1px, -2px);}
   }
   .folder-box svg{width:38%; height:38%; stroke:var(--violet-soft); fill:none; stroke-width:1.6;}
   .folder-box.photo{background-size:cover; background-position:center; overflow:hidden;}
