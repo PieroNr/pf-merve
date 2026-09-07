@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scantech — LinkedIn | Merve Borza</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
   :root{
     --bg:#0a0a0a; --text:#f4f2f5; --text-dim:rgba(244,242,245,0.62); --text-faint:rgba(244,242,245,0.38);
     --violet:#7f5af0; --violet-soft:#a695f2; --hairline:rgba(255,255,255,0.1);
-    --font-display:'Bodoni Moda', serif; --font-body:'Jost', sans-serif;
+    --font-display:'Bebas Neue', sans-serif; --font-body:'Inter', sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--bg); color:var(--text); font-family:var(--font-body); min-height:100vh; -webkit-font-smoothing:antialiased;}
@@ -27,7 +18,7 @@
     padding:10vh 20px 6vh;
   }
   .eyebrow{color:var(--violet-soft); font-size:11px; letter-spacing:3px; margin-bottom:8px;}
-  .stage h1{font-family:var(--font-display); font-weight:400; font-size:26px; margin-bottom:6vh;}
+  .stage h1{font-family:var(--font-display); font-weight:500; font-size:26px; margin-bottom:6vh;}
 
   /* --- Browser window frame --- */
   .browser{
@@ -72,6 +63,15 @@
     display:flex; align-items:center; justify-content:center;
     position:relative;
   }
+  .fullscreen-btn{
+    position:absolute; bottom:12px; left:12px; z-index:2;
+    width:32px; height:32px; border-radius:5px;
+    background:rgba(0,0,0,0.55); border:0.5px solid rgba(255,255,255,0.25);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background .2s, border-color .2s;
+  }
+  .fullscreen-btn:hover{background:rgba(127,90,240,0.35); border-color:var(--violet);}
+  .fullscreen-btn svg{width:15px; height:15px; stroke:#fff; fill:none; stroke-width:1.8;}
   .play-btn{
     width:60px; height:60px; border-radius:50%; border:1.5px solid var(--violet);
     display:flex; align-items:center; justify-content:center;
@@ -103,92 +103,15 @@
   .stage-note{
     margin-top:5vh; color:var(--text-faint); font-size:11px; letter-spacing:0.5px; text-align:center; max-width:400px;
   }
-</style>
-</head>
-<body>
 
-  <a href="/" class="back-link">← Retour aux projets</a>
-
-  <div class="stage">
-    <p class="eyebrow">SCANTECH — LINKEDIN</p>
-    <h1>Vidéos institutionnelles</h1>
-
-    <div class="browser">
-      <div class="browser-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="browser-url">linkedin.com/company/scantech/posts</span>
-      </div>
-
-      <div class="linkedin-post">
-        <div class="post-header">
-          <div class="post-avatar"></div>
-          <div class="post-meta">
-            <strong>Scantech</strong>
-            <span>1 240 abonnés</span>
-          </div>
-        </div>
-
-        <div class="video-track-wrap">
-          <div class="nav-arrow prev" id="prev-btn">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </div>
-          <div class="nav-arrow next" id="next-btn">
-            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-
-          <div class="video-track" id="video-track">
-            <div class="video-slide">
-              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-              <span class="slide-caption">World Metrology Day — teaser</span>
-            </div>
-            <div class="video-slide">
-              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-              <span class="slide-caption">Présentation scanner — assemblage</span>
-            </div>
-            <div class="video-slide">
-              <span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-              <span class="slide-caption">Portrait équipe — coulisses</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="dots" id="dots">
-          <span class="active"></span><span></span><span></span>
-        </div>
-
-        <p class="post-text">Retour sur trois vidéos réalisées pour Scantech — de l'écriture du script au montage final, pensées pour renforcer la présence LinkedIn de l'entreprise.</p>
-        <div class="post-actions">
-          <span>👍 J'aime</span><span>💬 Commenter</span><span>↗ Partager</span>
-        </div>
-      </div>
-    </div>
-
-    <p class="stage-note">Remplace chaque diapositive par ton lecteur vidéo réel (embed YouTube/LinkedIn). Les flèches et points naviguent entre les vidéos du projet.</p>
-  </div>
-
-  <script>
-    var track = document.getElementById('video-track');
-    var slides = track.children;
-    var dots = document.querySelectorAll('#dots span');
-    var index = 0;
-
-    function update(){
-      track.style.transform = 'translateX(-' + (index * 100) + '%)';
-      dots.forEach(function(d, i){ d.classList.toggle('active', i === index); });
-    }
-
-    document.getElementById('next-btn').addEventListener('click', function(){
-      index = (index + 1) % slides.length;
-      update();
-    });
-    document.getElementById('prev-btn').addEventListener('click', function(){
-      index = (index - 1 + slides.length) % slides.length;
-      update();
-    });
-    dots.forEach(function(d, i){
-      d.addEventListener('click', function(){ index = i; update(); });
-    });
-  </script>
-
-</body>
-</html>
+  .top-name{
+    position:fixed; top:24px; right:24px; z-index:10;
+    font-family:var(--font-display); font-size:14px; letter-spacing:2px;
+    color:var(--text); text-decoration:none;
+  }
+  .top-name-glow{
+    content:""; position:absolute; inset:-8px -12px; z-index:-1; border-radius:20px;
+    background:radial-gradient(circle, rgba(127,90,240,0.4), transparent 70%);
+    animation:navGlow 2.6s ease-in-out infinite;
+  }
+  @keyframes navGlow{0%,100%{opacity:0.35; transform:scale(0.9);} 50%{opacity:0.9; transform:scale(1.1);}}

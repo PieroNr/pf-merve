@@ -3,106 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reels — Inspire Media | Merve Borza</title>
+<title>Reels Instagram — Merve Borza</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0a0a0a; --text:#f4f2f5; --text-dim:rgba(244,242,245,0.62); --text-faint:rgba(244,242,245,0.38);
-    --violet:#7f5af0; --violet-soft:#a695f2; --hairline:rgba(255,255,255,0.1);
-    --font-display:'Bodoni Moda', serif; --font-body:'Jost', sans-serif;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{background:var(--bg); color:var(--text); font-family:var(--font-body); min-height:100vh; -webkit-font-smoothing:antialiased;}
-
-  .back-link{
-    position:fixed; top:24px; left:24px; z-index:10;
-    display:flex; align-items:center; gap:8px;
-    color:var(--text-dim); font-size:13px; letter-spacing:1px; text-decoration:none;
-  }
-  .back-link:hover{color:var(--text);}
-
-  .stage{
-    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    padding:10vh 20px 6vh;
-  }
-  .eyebrow{color:var(--violet-soft); font-size:11px; letter-spacing:3px; margin-bottom:8px;}
-  .stage h1{font-family:var(--font-display); font-weight:400; font-size:26px; margin-bottom:6vh;}
-
-  /* --- Phone frame --- */
-  .phone{
-    width:300px; height:620px;
-    background:#000;
-    border:8px solid #1c1c1c;
-    border-radius:38px;
-    box-shadow:0 0 0 1px rgba(127,90,240,0.25), 0 30px 60px rgba(0,0,0,0.6);
-    position:relative;
-    overflow:hidden;
-  }
-  .phone::before{ /* notch */
-    content:""; position:absolute; top:8px; left:50%; transform:translateX(-50%);
-    width:90px; height:18px; background:#1c1c1c; border-radius:12px; z-index:5;
-  }
-
-  .reel-scroll{
-    height:100%; width:100%;
-    overflow-y:scroll; scroll-snap-type:y mandatory;
-    scrollbar-width:none;
-  }
-  .reel-scroll::-webkit-scrollbar{display:none;}
-
-  .reel{
-    height:100%; width:100%;
-    scroll-snap-align:start;
-    position:relative;
-    display:flex; align-items:flex-end;
-    background:linear-gradient(180deg, #141014 0%, #1c1620 55%, #0a0a0a 100%);
-  }
-  .reel-video{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    opacity:0.9;
-  }
-  .reel-gradient{
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%);
-  }
-
-  .reel-side-icons{
-    position:absolute; right:12px; bottom:90px;
-    display:flex; flex-direction:column; gap:22px; align-items:center; z-index:3;
-  }
-  .reel-side-icons .icon{display:flex; flex-direction:column; align-items:center; gap:4px;}
-  .reel-side-icons svg{width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.6;}
-  .reel-side-icons span{font-size:10px; color:rgba(255,255,255,0.85);}
-
-  .reel-caption{
-    position:relative; z-index:3;
-    padding:0 16px 24px;
-    color:#fff;
-  }
-  .reel-caption .user{font-size:12px; font-weight:500; margin-bottom:4px; display:flex; align-items:center; gap:6px;}
-  .reel-caption .user .dot{width:6px; height:6px; border-radius:50%; background:var(--violet-soft);}
-  .reel-caption p{font-size:12px; line-height:1.5; color:rgba(255,255,255,0.85); max-width:220px;}
-
-  .swipe-hint{
-    position:absolute; top:16px; left:50%; transform:translateX(-50%);
-    color:rgba(255,255,255,0.55); font-size:10px; letter-spacing:2px; z-index:6;
-    display:flex; flex-direction:column; align-items:center; gap:2px;
-  }
-
-  .stage-note{
-    margin-top:5vh; color:var(--text-faint); font-size:11px; letter-spacing:0.5px; text-align:center; max-width:340px;
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/projet-reels.css">
 </head>
 <body>
+  <a href="index.html" class="top-name"><span class="top-name-glow"></span>MERVE BORZA</a>
 
-  <a href="/" class="back-link">← Retour aux projets</a>
+  <a href="index.html" class="back-link">← Retour aux projets</a>
 
   <div class="stage">
-    <p class="eyebrow">REELS — INSPIRE MEDIA</p>
+    <p class="eyebrow">MONTAGE RÉSEAUX SOCIAUX</p>
     <h1>Montage réseaux sociaux</h1>
 
     <div class="phone">
@@ -110,6 +22,7 @@
 
         <div class="reel">
           <span class="swipe-hint">▲ SWIPE ▲</span>
+          <iframe class="reel-video" src="https://www.youtube.com/embed/WemltsOmz7k" title="Reel 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:none;"></iframe>
           <div class="reel-gradient"></div>
           <div class="reel-side-icons">
             <div class="icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>2.4K</span></div>
@@ -117,12 +30,13 @@
             <div class="icon"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Partager</span></div>
           </div>
           <div class="reel-caption">
-            <p class="user"><span class="dot"></span>@inspiremedia</p>
-            <p>Montage rythmé pour la campagne printemps — cuts serrés, transitions au beat.</p>
+            <p class="user"><span class="dot"></span>@merveborza</p>
+            <p>Montage vidéo sur DaVinci Resolve.</p>
           </div>
         </div>
 
         <div class="reel">
+          <iframe class="reel-video" src="https://www.youtube.com/embed/Ch7emNupjyA" title="Reel 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:none;"></iframe>
           <div class="reel-gradient"></div>
           <div class="reel-side-icons">
             <div class="icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>3.1K</span></div>
@@ -130,12 +44,13 @@
             <div class="icon"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Partager</span></div>
           </div>
           <div class="reel-caption">
-            <p class="user"><span class="dot"></span>@inspiremedia</p>
-            <p>Format vertical, teasing produit — pensé pour capter en 2 secondes.</p>
+            <p class="user"><span class="dot"></span>@merveborza</p>
+            <p>Montage vidéo sur DaVinci Resolve.</p>
           </div>
         </div>
 
         <div class="reel">
+          <iframe class="reel-video" src="https://www.youtube.com/embed/Y19o8CjYrrM" title="Reel 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:none;"></iframe>
           <div class="reel-gradient"></div>
           <div class="reel-side-icons">
             <div class="icon"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>1.8K</span></div>
@@ -143,15 +58,15 @@
             <div class="icon"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span>Partager</span></div>
           </div>
           <div class="reel-caption">
-            <p class="user"><span class="dot"></span>@inspiremedia</p>
-            <p>Behind the scenes du tournage — ambiance brute, son direct.</p>
+            <p class="user"><span class="dot"></span>@merveborza</p>
+            <p>Montage vidéo sur DaVinci Resolve.</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <p class="stage-note">Remplace les fonds par tes vraies vidéos (balise &lt;video&gt; ou lecteur intégré). Le swipe vertical fonctionne nativement grâce au scroll-snap CSS — testable au doigt ou à la molette.</p>
+    <p class="stage-note">Le swipe vertical fonctionne nativement grâce au scroll-snap CSS — testable au doigt ou à la molette.</p>
   </div>
 
 </body>
